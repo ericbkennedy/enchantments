@@ -5,13 +5,13 @@ for different permit start dates. By Eric Kennedy February 2023
 Data from https://www.fs.usda.gov/detail/okawen/passes-permits/recreation/?cid=fsbdev3_053607
 """
 import pandas as pd
-from pandas import read_csv
 pd.options.display.float_format = '{:.1%}'.format
 
 def calculate_odds(csv_file, date_start, date_end):
-    df = read_csv(csv_file)
+    with open(csv_file) as f:
+        df = pd.read_csv(f)
     desired_zone = "Core Enchantment Zone"
-    all_entries = None
+    all_entries = pd.DataFrame(index=pd.Index([], name="entry_date")) # empty DF with index to concat winners and entries
 
     for i in range(1, 4):
         winners = df[(df[f"Preferred Division {i}"] == desired_zone) & (df["Awarded Preference"] == i)]
@@ -24,10 +24,7 @@ def calculate_odds(csv_file, date_start, date_end):
         entries_by_date = entries.groupby(f"Preferred Entry Date {i}")[f"Minimum Acceptable Group Size {i}"].sum()
         entries_by_date = entries_by_date.rename_axis("entry_date").rename(f"r{i}_entries")
 
-        if (all_entries is None):
-            all_entries = pd.concat([winners_by_date, entries_by_date], axis=1)
-        else:
-            all_entries = pd.concat([all_entries, winners_by_date, entries_by_date], axis=1)
+        all_entries = pd.concat([all_entries, winners_by_date, entries_by_date], axis=1)
         all_entries = all_entries.fillna(0)
         all_entries[f"r{i}_odds"] = all_entries[f"r{i}_winners"] / (all_entries[f"r{i}_entries"])
 
