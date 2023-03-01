@@ -17,7 +17,7 @@ Data from [fs.usda.gov](https://www.fs.usda.gov/detail/okawen/passes-permits/rec
 ```
               weekday r1_winners r1_entries  r1_odds r2_winners r2_entries  r2_odds r3_winners r3_entries  r3_odds
 entry_date                                                                                                        
-2022-10-23     Sunday          4          4   100.0%          0          0     0.0%          0          0      NaN
+2022-10-23     Sunday          4          4   100.0%          0          0                   0          0         
 2022-10-16     Sunday         20         30    66.7%          0         36     0.0%          4         33    12.1%
 2022-10-21     Friday          8         16    50.0%          0          8     0.0%          8         68    11.8%
 2022-10-09     Sunday         21         72    29.2%          0         93     0.0%          3        114     2.6%
@@ -72,7 +72,7 @@ entry_date
               weekday r1_winners r1_entries  r1_odds r2_winners r2_entries  r2_odds r3_winners r3_entries  r3_odds
 entry_date                                                                                                        
 2020-10-21  Wednesday          2          2   100.0%         12         16    75.0%          2         10    20.0%
-2020-10-25     Sunday         12         12   100.0%          0          0     0.0%          0          0      NaN
+2020-10-25     Sunday         12         12   100.0%          0          0                   0          0        
 2020-10-18     Sunday         12         12   100.0%          4          8    50.0%          6         10    60.0%
 2020-10-20    Tuesday         10         10   100.0%          2          6    33.3%          4         16    25.0%
 2020-10-24   Saturday         12         16    75.0%          2          6    33.3%          2         10    20.0%
