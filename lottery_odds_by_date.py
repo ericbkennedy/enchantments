@@ -27,6 +27,7 @@ def calculate_odds(csv_file, date_start, date_end):
         all_entries = pd.concat([all_entries, winners_by_date, entries_by_date], axis=1)
         all_entries = all_entries.fillna(0)
         all_entries[f"r{i}_odds"] = all_entries[f"r{i}_winners"] / (all_entries[f"r{i}_entries"])
+        all_entries = all_entries.fillna("") # skip % calculation if no one entered for a date
 
     all_entries.index = pd.to_datetime(all_entries.index)
 
